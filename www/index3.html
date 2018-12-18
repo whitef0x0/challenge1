@@ -1,0 +1,106 @@
+<html>
+	<head>
+		<style>
+			* { box-sizing: border-box; }
+
+			/* force scrollbar */
+			html { overflow-y: scroll; }
+
+			body { font-family: sans-serif; }
+
+			/* ---- grid ---- */
+
+			.grid {
+			  background: #DDD;
+			}
+
+			/* clear fix */
+			.grid:after {
+			  content: '';
+			  display: block;
+			  clear: both;
+			}
+
+			/* ---- .grid-item ---- */
+
+			.grid-sizer,
+			.grid-item {
+			  width: 33.333%;
+			}
+
+			.grid-item {
+			  float: left;
+			}
+
+			.grid-item img {
+			  display: block;
+			  max-width: 100%;
+			}
+		</style>
+
+		<script type="text/javascript" src="/public/scripts/masonry.pkgd.js"></script>
+		<script type="text/javascript" src="/public/scripts/imagesloaded.pkgd.js"></script>
+	</head>
+
+	<body>
+		<div class="grid">
+			<div class="grid-sizer"></div>
+
+			<div class="grid-item">
+				<img src="/public/images/mri1.gif">
+			</div>
+
+			<div class="grid-item">
+				<img src="/public/images/mri2.gif">
+			</div>
+
+			<div class="grid-item">
+				<img src="/public/images/mri3.gif">
+			</div>
+
+			<div class="grid-item">
+				<img src="/public/images/mri4.gif">
+			</div>
+
+			<div class="grid-item">
+				<img src="/public/images/mri4.gif">
+			</div>
+
+			<div class="grid-item">
+				<img src="/public/images/mri3.gif">
+			</div>
+
+			<div class="grid-item">
+				<img src="/public/images/mri2.gif">
+			</div>
+
+			<div class="grid-item">
+				<img src="/public/images/mri1.gif">
+			</div>
+
+			<div class="grid-item">
+				<img src="/public/images/mri2.gif">
+			</div>
+
+			<div class="grid-item">
+				<img src="/public/images/mri3.gif">
+			</div>
+		</div>
+
+		<script>
+			// external js: masonry.pkgd.js, imagesloaded.pkgd.js
+
+			var grid = document.querySelector('.grid');
+			var msnry;
+
+			imagesLoaded( grid, function() {
+			  // init Isotope after all images have loaded
+			  msnry = new Masonry( grid, {
+			    itemSelector: '.grid-item',
+			    columnWidth: '.grid-sizer',
+			    percentPosition: true
+			  });
+			});
+		</script>
+	</body>
+</html>
