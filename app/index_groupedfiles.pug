@@ -1,0 +1,38 @@
+html
+  head
+    style.
+      body {
+        background-color: black;
+      }
+      .grid {
+        display: flex; /* our flexgrid-image container */
+        margin: .5em -1em .5em -1.5em;
+        flex-flow: wrap;
+      }
+      .grid + .grid {
+        margin-top: -.5em;  
+      }
+      .grid-image {
+        flex: 0 auto;
+        margin: 0 auto;
+        padding: .5em 0 0 .5em;
+        width: 100%;
+      }
+      @media (min-width: 40em) {
+        .grid {
+          margin: .5em 0 .5em -.5em;
+          /*setting the left margin at -.5em and the right at 0 offsets the grid to account for the gutters*/
+        }
+        .grid-image {
+          flex: 1 0 25%;
+        }
+      }
+      .grid-image > img {
+        width: 100%;
+      }
+  body
+    each group in fileGroups
+      .grid
+        each file in group
+          figure.grid-image
+            img(src="/public/"+file.path)
