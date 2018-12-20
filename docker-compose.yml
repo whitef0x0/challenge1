@@ -10,6 +10,18 @@ services:
             - ./www:/var/www/site
         networks:
             - back-tier
+        depends_on:
+            - extract-data
+
+    extract-data:
+        build:
+            context: .
+        volumes:
+            - ./app:/code
+            - ./www:/var/www/site
+        networks:
+            - back-tier
+        command: bin/command.sh
 
 volumes:
     mongo-data-wt:

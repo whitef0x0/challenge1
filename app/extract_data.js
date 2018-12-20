@@ -36,13 +36,13 @@ function compareByAspectRatio(a,b) {
 }
 
 
-recursive("./data", [ignoreNonGifs], async function (fileReadError, files) {
+recursive("/var/www/site/public/data", [ignoreNonGifs], async function (fileReadError, files) {
   if(fileReadError) throw fileReadError;
 
   let fileObjectArray = await Promise.all(files.map(async function(imagePath){
   	let imageAspectRatio = await calculateAspectRatio(imagePath);
   	return {
-  		path: imagePath,
+  		path: path.relative('/var/www/site/', imagePath),
   		aspectRatio: Math.round(imageAspectRatio*10)
   	}
   }));
@@ -51,7 +51,6 @@ recursive("./data", [ignoreNonGifs], async function (fileReadError, files) {
  	let groupedFiles = fileObjectArray.groupBy("aspectRatio");
 
  	//Render template with grouped files
- 	let htmlTemplate = pug.renderFile('index_groupedfiles.pug', {fileGroups: groupedFiles});
-  await fs.writeFile('../www/index.html', htmlTemplate);
-
+ 	let htmlTemplate = pug.renderFile('index.pug', {fileGroups: groupedFiles});
+  await fs.writeFile('/var/www/site/index.html', htmlTemplate);
 });

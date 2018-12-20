@@ -1,0 +1,17 @@
+{
+  "name": "challenge1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "extract_data.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Arielle Baldwin",
+  "dependencies": {
+    "calipers": "^2.0.1",
+    "calipers-gif": "^2.0.0",
+    "fs-extra": "^7.0.1",
+    "pug": "^2.0.3",
+    "recursive-readdir": "^2.2.2"
+  }
+}
